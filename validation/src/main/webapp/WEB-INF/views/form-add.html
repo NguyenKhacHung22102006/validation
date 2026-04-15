@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Update</title>
+</head>
+<body>
+<h1>Update shipping address</h1>
+<p>Submit the form to update the address.</p>
+
+<p th:if="${message}" th:text="${message}"></p>
+
+<form th:action="@{/form-add}" th:object="${addressDto}" method="post">
+    <p>
+        <label for="receiverName">Receiver name</label><br>
+        <input id="receiverName" type="text" th:field="*{receiverName}">
+    </p>
+
+    <p th:if="${#fields.hasErrors('receiverName')}" th:errors="*{receiverName}"></p>
+
+    <p>
+        <label for="detailedAddress">Detailed address</label><br>
+        <input id="detailedAddress" type="text" th:field="*{detailedAddress}">
+    </p>
+
+    <p th:if="${#fields.hasErrors('detailedAddress')}" th:errors="*{detailedAddress}"></p>
+
+    <p>
+        <button type="submit">Update address</button>
+    </p>
+</form>
+
+<p><a href="/">Back to overview</a></p>
+</body>
+</html>
